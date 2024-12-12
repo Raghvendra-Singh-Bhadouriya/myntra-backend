@@ -12,7 +12,10 @@ const globalBrandRouter = require("./Routes/BodyRoutes/globalbrandRoute")
 const categoryshopRouter = require("./Routes/BodyRoutes/categoryshopRoute")
 const productCategoryRouter = require("./Routes/productCategoryRoute.js")
 
-app.use(cors({origin: 'http://localhost:5173'}))
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 app.use(express.json())
 app.use('/', userRouter)
 app.use("/", topImgRouter)
